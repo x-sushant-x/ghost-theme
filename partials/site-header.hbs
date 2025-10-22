@@ -1,0 +1,21 @@
+<header class="vscode-header">
+    <div class="vscode-header-left">
+        <div class="window-controls">
+            <span class="window-btn close"></span>
+            <span class="window-btn minimize"></span>
+        <span class="window-btn maximize"></span>
+        </div>
+    </div>
+
+    <div class="vscode-header-center">
+        <a href="{{@site.url}}" class="site-name">{{@site.title}}</a>
+    </div>
+
+    <div class="vscode-header-right">
+        <nav class="vscode-tabs">
+            {{#foreach @site.navigation}}
+                <a href="{{absolute_url}}" class="tab {{#if current}}active{{/if}}">{{label}}</a>
+            {{/foreach}}
+        </nav>
+    </div>
+</header>

@@ -1,0 +1,492 @@
+/* Add this to your assets/css/screen.css file */
+
+/* Gruvbox Dark Hard Color Variables */
+:root {
+    /* Primary Backgrounds */
+    --gruvbox-bg: #1d2021;      /* Background (Base) */
+    --gruvbox-bg-light: #32302f;/* Background Light (Sidebar, Tabs BG, Titlebar) */
+    --gruvbox-bg-dark: #000000; /* Terminal Background (Darkest) */
+
+    /* Text & UI Elements */
+    --gruvbox-fg: #d4be98;      /* Foreground (Text) */
+    --gruvbox-fg-muted: #665c54;/* Foreground Muted (Headers, Non-Active Text) */
+    --gruvbox-border: #504945;  /* Border/Divider Color */
+    
+    /* UI States */
+    --gruvbox-accent: #b8bb26;  /* Bright Green-Yellow (Main Accent/Status Bar) */
+    --gruvbox-hover: #3c3836;   /* Hover State */
+    --gruvbox-active: #504945;  /* Active/Selected State */
+
+    /* Gruvbox Palette Colors */
+    --gruvbox-red: #fb4934;
+    --gruvbox-green: #b8bb26;
+    --gruvbox-yellow: #fabd2f;
+    --gruvbox-blue: #83a598;
+    --gruvbox-purple: #d3869b;
+    --gruvbox-aqua: #8ec07c;
+    --gruvbox-orange: #fe8019;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    background: var(--gruvbox-bg);
+    color: var(--gruvbox-fg);
+    line-height: 1.6;
+}
+
+/* VS Code Window Chrome */
+.vscode-titlebar {
+    background: var(--gruvbox-bg); /* Titlebar uses a slightly lighter background */
+    height: 35px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    border-bottom: 1px solid var(--gruvbox-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.traffic-lights {
+    display: flex;
+    gap: 8px;
+    margin-right: 15px;
+}
+
+.traffic-lights span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.traffic-light-close { background: var(--gruvbox-red); }
+.traffic-light-minimize { background: var(--gruvbox-yellow); }
+.traffic-light-maximize { background: var(--gruvbox-green); }
+
+.window-title {
+    flex: 1;
+    text-align: center;
+    font-size: 13px;
+    color: var(--gruvbox-fg);
+}
+
+/* Menu Bar */
+.vscode-menubar {
+    background: var(--gruvbox-bg);
+    padding: 5px 15px;
+    display: flex;
+    gap: 20px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--gruvbox-border);
+}
+
+.vscode-menubar a {
+    color: var(--gruvbox-fg);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.vscode-menubar a:hover {
+    color: var(--gruvbox-accent);
+}
+
+/* Main Layout */
+.vscode-container {
+    display: flex;
+    min-height: calc(100vh - 75px);
+}
+
+/* Sidebar */
+.vscode-sidebar {
+    width: 280px;
+    background: var(--gruvbox-bg);
+    border-right: 1px solid var(--gruvbox-border);
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    padding: 12px 20px;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--gruvbox-fg-muted);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.folder-icon {
+    font-size: 14px;
+}
+
+.file-tree {
+    padding: 5px 0;
+}
+
+.file-item {
+    padding: 6px 20px;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.15s;
+    color: var(--gruvbox-fg);
+}
+
+.file-item:hover {
+    background: var(--gruvbox-hover);
+}
+
+.file-item.active {
+    background: var(--gruvbox-active);
+}
+
+.file-icon {
+    font-size: 16px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Main Editor Area */
+.vscode-editor {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--gruvbox-bg);
+}
+
+/* Tabs */
+.editor-tabs {
+    display: flex;
+    background: var(--gruvbox-bg);
+    border-bottom: 1px solid var(--gruvbox-border);
+    overflow-x: auto;
+}
+
+.editor-tab {
+    padding: 10px 20px;
+    font-size: 13px;
+    background: var(--gruvbox-bg);
+    border-right: 1px solid var(--gruvbox-border);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.15s;
+    white-space: nowrap;
+    color: var(--gruvbox-fg-muted);
+}
+
+.editor-tab.active {
+    background: var(--gruvbox-bg);
+    color: var(--gruvbox-fg);
+    border-top: 2px solid var(--gruvbox-accent);
+}
+
+.editor-tab:hover {
+    background: var(--gruvbox-hover);
+}
+
+/* Editor Content */
+.editor-content {
+    padding: 30px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+/* Line Numbers */
+.line-numbers {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 5px;
+}
+
+.line-number {
+    color: var(--gruvbox-fg-muted);
+    font-size: 13px;
+    user-select: none;
+    width: 35px;
+    text-align: right;
+}
+
+.line-content {
+    flex: 1;
+}
+
+/* Post List Styling - Terminal Style */
+.post-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1000px;
+}
+
+.post-card {
+    background: var(--gruvbox-bg); /* True black terminal background */
+    border: 1px solid var(--gruvbox-border);
+    border-radius: 6px;
+    padding: 0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.post-card:hover {
+    border-color: var(--gruvbox-green);
+    box-shadow: 0 4px 16px rgba(184, 187, 38, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Terminal Header */
+.terminal-header {
+    background: var(--gruvbox-bg);
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--gruvbox-border);
+}
+
+.terminal-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.dot-red { background: var(--gruvbox-red); }
+.dot-yellow { background: var(--gruvbox-yellow); }
+.dot-green { background: var(--gruvbox-green); }
+
+.terminal-title {
+    font-size: 12px;
+    color: var(--gruvbox-fg-muted);
+    margin-left: 10px;
+}
+
+/* Terminal Content */
+.terminal-content {
+    padding: 20px;
+    font-family: 'Fira Code', 'Consolas', monospace;
+}
+
+/* Command Prompt Lines */
+.terminal-line {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.prompt {
+    color: var(--gruvbox-green);
+    font-weight: 600;
+    user-select: none;
+    flex-shrink: 0;
+}
+
+.prompt-user {
+    color: var(--gruvbox-aqua);
+}
+
+.prompt-path {
+    color: var(--gruvbox-blue);
+}
+
+.prompt-symbol {
+    color: var(--gruvbox-green);
+}
+
+.command {
+    color: var(--gruvbox-fg);
+    flex: 1;
+}
+
+/* Post Meta Line */
+.post-card-meta {
+    display: flex;
+    gap: 8px;
+    font-size: 13px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.post-card-meta .flag {
+    color: var(--gruvbox-green);
+    font-weight: 600;
+}
+
+.post-card-meta .value {
+    color: var(--gruvbox-orange);
+}
+
+.post-card-meta .separator {
+    color: var(--gruvbox-fg-muted);
+}
+
+/* Post Title - Command Style */
+.post-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gruvbox-yellow);
+    text-decoration: none;
+    display: inline;
+    transition: all 0.2s;
+}
+
+.post-card-title:hover {
+    color: #fce883; 
+    text-shadow: 0 0 8px rgba(250, 189, 47, 0.3);
+}
+
+/* Output/Excerpt */
+.terminal-output {
+    margin-left: 0;
+    padding-left: 20px;
+    border-left: 2px solid var(--gruvbox-border);
+    margin-top: 8px;
+    margin-bottom: 12px;
+}
+
+.post-card-excerpt {
+    font-size: 14px;
+    color: var(--gruvbox-fg);
+    line-height: 1.6;
+    margin: 8px 0;
+}
+
+/* Tags - Flags Style */
+.post-card-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.post-card-tag {
+    font-size: 12px;
+    color: var(--gruvbox-aqua);
+    text-decoration: none;
+    transition: all 0.2s;
+    border-bottom: 1px solid transparent;
+}
+
+.post-card-tag:hover {
+    color: #a7d096;
+    border-bottom-color: var(--gruvbox-aqua);
+}
+
+.post-card-tag::before {
+    content: '--';
+    color: var(--gruvbox-fg-muted);
+    margin-right: 2px;
+}
+
+/* Footer Command Line */
+.terminal-footer {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--gruvbox-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Read More - Command Style */
+.read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    color: var(--gruvbox-green);
+    text-decoration: none;
+    transition: all 0.2s;
+    margin-top: 12px;
+    padding: 6px 12px;
+    border: 1px solid var(--gruvbox-green);
+    border-radius: 4px;
+    background: rgba(184, 187, 38, 0.05);
+}
+
+.read-more:hover {
+    background: rgba(184, 187, 38, 0.1);
+    box-shadow: 0 0 10px rgba(184, 187, 38, 0.2);
+}
+
+.read-more::before {
+    content: '>';
+    font-weight: bold;
+}
+
+/* Cursor Blink Animation */
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background: var(--gruvbox-green);
+    margin-left: 2px;
+    animation: blink 1s infinite;
+}
+
+/* Status Bar */
+.vscode-statusbar {
+    background: var(--gruvbox-accent); /* Bright accent color */
+    color: var(--gruvbox-bg); /* Dark text on bright background */
+    padding: 5px 15px;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.statusbar-left,
+.statusbar-right {
+    display: flex;
+    gap: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .vscode-sidebar {
+        display: none;
+    }
+    
+    .editor-content {
+        padding: 20px;
+    }
+    
+    .post-card {
+        padding: 15px;
+    }
+
+    .terminal-content {
+        padding: 15px;
+    }
+    
+    .terminal-line {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
